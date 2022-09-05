@@ -17,5 +17,6 @@ class LocationsController extends Controller
     public function store()
     {
         Location::create(request(['name', 'description']));
+        return redirect('/locations');
     }
 }

@@ -20,7 +20,7 @@ class LocationsTest extends TestCase
             'description' => $this->faker->paragraph
         ];
 
-        $this->post('/locations', $attributes);
+        $this->post('/locations', $attributes)->assertRedirect('/locations');
 
         $this->assertDatabaseHas('locations', $attributes);
 

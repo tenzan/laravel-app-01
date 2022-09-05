@@ -1,4 +1,5 @@
 <?php
+use \App\Http\Controllers\LocationsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/locations', 'LocationsController@ndex');
+Route::get('/locations', [LocationsController::class, 'index']);
 
-Route::post('/locations', 'LocationsController@store');
-
+Route::post('/locations', [LocationsController::class, 'store']);

@@ -22,3 +22,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/locations', 'LocationsController@ndex');
+
+Route::post('/locations', 'LocationsController@store');
+

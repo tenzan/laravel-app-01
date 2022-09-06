@@ -29,6 +29,18 @@ class LocationsTest extends TestCase
     }
 
     /** @test */
+    public function a_user_can_view_a_location()
+    {
+        $this->withoutExceptionHandling();
+
+        $location = Location::factory()->create();
+
+        $this->get('locations/' . $location->id)
+            ->assertSee($location->name)
+            ->assertSee($location->description);
+    }
+
+    /** @test */
     public function a_location_requires_a_name()
     {
         $attributes = Location::factory()->raw(['name' => '']);

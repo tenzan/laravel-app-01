@@ -14,9 +14,19 @@ class LocationsController extends Controller
 
     }
 
+    public function show(Location $location)
+    {
+
+
+        return view('locations.show', compact('location'));
+    }
+
     public function store()
     {
-        $attributes = request()->validate(['name' => 'required', 'description' => '']);
+        $attributes = request()->validate([
+            'name' => 'required',
+            'description' => ''
+        ]);
 
         Location::create($attributes);
 

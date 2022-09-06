@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,10 @@ class LocationFactory extends Factory
         return [
             'name' => fake()->sentence,
             'description' => fake()->paragraph,
+            'owner_id' => function()
+            {
+                return Location::factory()->create()->id;
+            }
         ];
     }
 }

@@ -27,6 +27,8 @@ class LocationsController extends Controller
             'description' => ''
         ]);
 
+        $attributes['owner_id'] = auth()->id();
+
         Location::create($attributes);
 
         return redirect('/locations');

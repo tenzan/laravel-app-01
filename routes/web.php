@@ -26,4 +26,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/locations', [LocationsController::class, 'index']);
 Route::get('/locations/{location}', [LocationsController::class, 'show']);
-Route::post('/locations', [LocationsController::class, 'store']);
+Route::post('/locations', [LocationsController::class, 'store'])->middleware('auth');

@@ -48,4 +48,14 @@ class LocationsTest extends TestCase
         $this->post('/locations',$attributes)->assertSessionHasErrors('name');
     }
 
+    /** @test */
+    public function a_location_requires_an_owner()
+    {
+        $this->withoutExceptionHandling();
+
+        $attributes = Location::factory()->raw();
+
+        $this->post('/locations',$attributes)->assertRedirect('login');
+    }
+
 }

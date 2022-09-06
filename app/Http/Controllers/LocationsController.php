@@ -16,7 +16,10 @@ class LocationsController extends Controller
 
     public function store()
     {
-        Location::create(request(['name', 'description']));
+        $attributes = request()->validate(['name' => 'required', 'description' => '']);
+
+        Location::create($attributes);
+
         return redirect('/locations');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Location;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,6 +26,14 @@ class LocationsTest extends TestCase
         $this->assertDatabaseHas('locations', $attributes);
 
         $this->get('/locations')->assertSee($attributes['name']);
+    }
+
+    /** @test */
+    public function a_location_requires_a_name()
+    {
+        $attributes = Location::factory()->raw(['name' => '']);
+
+        $this->post('/locations',$attributes)->assertSessionHasErrors('name');
     }
 
 }

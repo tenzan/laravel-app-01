@@ -10,4 +10,9 @@ class Location extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function path()
+    {
+        return "/locations/{$this->id}";
+    }
 }

@@ -35,7 +35,7 @@ class LocationsTest extends TestCase
 
         $location = Location::factory()->create();
 
-        $this->get('locations/' . $location->id)
+        $this->get($location->path())
             ->assertSee($location->name)
             ->assertSee($location->description);
     }

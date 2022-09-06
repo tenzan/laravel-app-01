@@ -7,9 +7,13 @@
 <body>
 <h1>Locations</h1>
 <ul>
-    @foreach($locations as $location)
-        <li>{{ $location->name }}</li>
-    @endforeach
+    @forelse($locations as $location)
+        <li>
+            <a href="{{ $location->path() }}">{{ $location->name }}</a>
+        </li>
+    @empty
+        <li>No locations yet</li>
+    @endforelse
 </ul>
 
 </body>
